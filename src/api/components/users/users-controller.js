@@ -55,7 +55,7 @@ async function createUser(request, response, next) {
     if (password !== confirmpassword) {
       throw errorResponder(
         errorTypes.INVALID_PASSWORD,
-        'password dan confirm password berbeda'
+        'password and confirm password are different'
       );
     }
 
@@ -63,7 +63,7 @@ async function createUser(request, response, next) {
     if (exist) {
       throw errorResponder(
         errorTypes.EMAIL_ALREADY_TAKEN,
-        'Email telah ada di db'
+        'Email already exist'
       );
     }
 
@@ -94,6 +94,14 @@ async function updateUser(request, response, next) {
     const id = request.params.id;
     const name = request.body.name;
     const email = request.body.email;
+
+    const exist = await usersService.checkEmailExist(email);
+    if (exist) {
+      throw errorResponder(
+        errorTypes.EMAIL_ALREADY_TAKEN,
+        'Email already exist'
+      );
+    }
 
     const success = await usersService.updateUser(id, name, email);
     if (!success) {
@@ -157,7 +165,7 @@ async function patchUser(request, response, next) {
     if (newpassword !== confirmnewpassword) {
       throw errorResponder(
         errorTypes.INVALID_PASSWORD,
-        'password dan confirm password berbeda'
+        'password and confirm password are different'
       );
     }
 

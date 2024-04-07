@@ -1,5 +1,6 @@
 const { User } = require('../../../models');
 const { errorTypes } = require('../../../core/errors');
+const { func } = require('joi');
 
 /**
  * Get a list of users
@@ -23,7 +24,9 @@ async function getUser(id) {
  * @param {string} email - User email
  * @returns {Promise}
  */
-
+async function getUserEmail(email) {
+  return User.findOne({email})
+}
 /**
  * Get user detail
  * @param {string} email - User email
@@ -105,4 +108,5 @@ module.exports = {
   patchUser,
   deleteUser,
   getUserpassbyId,
+  getUserEmail,
 };
