@@ -29,7 +29,7 @@ async function getUserEmail(email) {
 }
 /**
  * Get user detail
- * @param {string} email - User email
+ * @param {string} id - User ID
  * @returns {String}
  */
 async function getUserpassbyId(id) {
