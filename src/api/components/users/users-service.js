@@ -143,7 +143,7 @@ async function patchUser(id, password, newpassword) {
 async function checkLoginCredentials(id, password) {
   const user = await usersRepository.getUser(id);
   const passwordChecked = await passwordMatched(password, user.password);
-  return !passwordChecked
+  return !passwordChecked;
 }
 module.exports = {
   getUsers,
