@@ -28,15 +28,6 @@ async function getUserEmail(email) {
   return User.findOne({email})
 }
 /**
- * Get user detail
- * @param {string} id - User ID
- * @returns {String}
- */
-async function getUserpassbyId(id) {
-  const user = User.findById(id);
-  return User.password;
-}
-/**
  * Create new user
  * @param {string} name - Name
  * @param {string} email - Email
