@@ -98,6 +98,5 @@ module.exports = {
   updateUser,
   patchUser,
   deleteUser,
-  getUserpassbyId,
   getUserEmail,
 };
